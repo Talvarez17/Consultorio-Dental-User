@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConexionService } from 'src/app/services/conexion.service';
 
 @Component({
-  selector: 'app-citas',
-  templateUrl: './citas.component.html',
-  styleUrls: ['./citas.component.css']
+  selector: 'app-proximas-citas',
+  templateUrl: './proximas-citas.component.html',
+  styleUrls: ['./proximas-citas.component.css']
 })
-export class CitasComponent {
+export class ProximasCitasComponent {
 
   date = new Date();
   citas: any = [];
@@ -47,7 +47,7 @@ export class CitasComponent {
 
   obtenerCitasPaciente(id:any ='', page: number = 1, search: string = ''): void {
     const queryParams = `id=${id}&page=${page}&pageSize=${this.perPage}&search=${search}`;
-    this.service.get(`citas/getHistorial?${queryParams}`).subscribe((info: any) => {
+    this.service.get(`citas/getProximaPaciente?${queryParams}`).subscribe((info: any) => {
       if (info) {
         this.citas = info.data;
         this.total = info.pagination.total;
